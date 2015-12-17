@@ -71,10 +71,9 @@ $('#bc').on('click', function(){
   bcDGetter.done(function(response){
     console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
+    var dist = response.rows[0].elements[0].distance.text;
     console.log(dTime);
-    $(".togglers").hide();
-    $("#t6").html("<div class='box info t1'><h3 id='t6'>&#x2744 Average Drive Time: "+response.rows[0].elements[0].duration.text+"</h3>")
-    $("#t7").html("<div class='box info t1'><h3 id='t7'>&#x2744 Distance from Denver: "+response.rows[0].elements[0].distance.text+"</h3>")
+    appendTraf(dTime, dist)
   });
   bcGetter.done(function(response){
     var csDepth = response["data"][4]["Change In Snow Depth (in)"]
@@ -84,27 +83,16 @@ $('#bc').on('click', function(){
     ///snow rate
     getSnowRate(sDepth);
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Beaver Creek</h2>")
-    $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-    $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-    $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-    $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-    $('#t1').toggle(800,"swing");
-    $('#t2').toggle(1000,"swing");
-    $('#t3').toggle(1200,"swing");
-    $('#t4').toggle(1400,"swing");
-    $('#t5').toggle(1600,"swing");
-    $('#t6').toggle(1800,"swing");
-    $('#t7').toggle(2000,"swing");
+    appendData(sDepth, csDepth, namey, elevation);
   });
 })
 $('#vl').on('click', function(){
   vailDGetter.done(function(response){
     console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
+    var dist = response.rows[0].elements[0].distance.text;
     console.log(dTime);
-    $(".togglers").hide();
-    $("#t6").html("<div class='box info t1'><h3 id='t6'>&#x2744 Average Drive Time: "+response.rows[0].elements[0].duration.text+"</h3>")
-    $("#t7").html("<div class='box info t1'><h3 id='t7'>&#x2744 Distance from Denver: "+response.rows[0].elements[0].distance.text+"</h3>")
+    appendTraf(dTime, dist)
   });
   vailGetter.done(function(response){
     var csDepth = response["data"][4]["Change In Snow Depth (in)"]
@@ -112,28 +100,17 @@ $('#vl').on('click', function(){
     var elevation = response["station_information"]["elevation"]
     var namey = response["station_information"]["name"]
     getSnowRate(sDepth);
+    appendData(sDepth, csDepth, namey, elevation);
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Vail</h2>")
-    $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-    $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-    $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-    $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-    $('#t1').toggle(800,"swing");
-    $('#t2').toggle(1000,"swing");
-    $('#t3').toggle(1200,"swing");
-    $('#t4').toggle(1400,"swing");
-    $('#t5').toggle(1600,"swing");
-    $('#t6').toggle(1800,"swing");
-    $('#t7').toggle(2000,"swing");
   });
 })
 $('#ab').on('click', function(){
   abDGetter.done(function(response){
     console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
+    var dist = response.rows[0].elements[0].distance.text;
     console.log(dTime);
-    $(".togglers").hide();
-    $("#t6").html("<div class='box info t1'><h3 id='t6'>&#x2744 Average Drive Time: 1hr 15mins</h3>")
-    $("#t7").html("<div class='box info t1'><h3 id='t7'>&#x2744 Distance from Denver: 63.7 mi</h3>")
+    appendTraf(dTime, dist)
   });
   abGetter.done(function(response){
     var csDepth = response["data"][4]["Change In Snow Depth (in)"]
@@ -142,28 +119,17 @@ $('#ab').on('click', function(){
     var namey = response["station_information"]["name"]
     ///snow rate
     getSnowRate(sDepth);
+    appendData(sDepth, csDepth, namey, elevation);
     $('#t1').html("<div class='box info t1'><h2 class='h3er'id='he2'>&#x2744 Arapahoe Basin</h2>")
-    $('#t2').html("<div class='box info t1'><h3 class='h3er'id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-    $('#t3').html("<div class='box info t1'><h3 class='h3er'id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-    $('#t5').html("<div class='box info t1'><h3 class='h3er'id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-    $('#t4').html("<div class='box info t1'><h3 class='h3er'id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-    $('#t1').toggle(800,"swing");
-    $('#t2').toggle(1000,"swing");
-    $('#t3').toggle(1200,"swing");
-    $('#t4').toggle(1400,"swing");
-    $('#t5').toggle(1600,"swing");
-    $('#t6').toggle(1800,"swing");
-    $('#t7').toggle(2000,"swing");
   });
 })
 $('#ks').on('click', function(){
   ksDGetter.done(function(response){
     console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
+    var dist = response.rows[0].elements[0].distance.text;
     console.log(dTime);
-    $(".togglers").hide();
-    $("#t6").html("<div class='box info t1'><h3 id='t6'>&#x2744 Average Drive Time: "+dTime+"</h3>")
-    $("#t7").html("<div class='box info t1'><h3 id='t7'>&#x2744 Distance from Denver: "+response.rows[0].elements[0].distance.text+"</h3>")
+    appendTraf(dTime, dist)
   });
   ksGetter.done(function(response){
     var csDepth = response["data"][4]["Change In Snow Depth (in)"]
@@ -171,52 +137,26 @@ $('#ks').on('click', function(){
     var elevation = response["station_information"]["elevation"]
     var namey = response["station_information"]["name"]
     getSnowRate(sDepth);
+    appendData(sDepth, csDepth, namey, elevation);
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Keystone</h2>")
-    $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-    $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-    $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-    $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-    $('#t1').toggle(800,"swing");
-    $('#t2').toggle(1000,"swing");
-    $('#t3').toggle(1200,"swing");
-    $('#t4').toggle(1400,"swing");
-    $('#t5').toggle(1600,"swing");
-    $('#t6').toggle(1800,"swing");
-    $('#t7').toggle(2000,"swing");
   });
 });
 $('#br').on('click', function(){
   brekDGetter.done(function(response){
     console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
+    var dist = response.rows[0].elements[0].distance.text;
+    appendTraf(dTime, dist)
     console.log(dTime);
-    $(".togglers").hide();
-    $("#t6").html("<div class='box info t1'><h3 id='t6'>&#x2744 Average Drive Time: "+dTime+"</h3>")
-    $("#t7").html("<div class='box info t1'><h3 id='t7'>&#x2744 Distance from Denver: "+response.rows[0].elements[0].distance.text+"</h3>")
   });
   brekGetter.done(function(response){
     var csDepth = response["data"][4]["Change In Snow Depth (in)"]
     var sDepth = response["data"][4]["Snow Depth (in)"]
     var elevation = response["station_information"]["elevation"]
     var namey = response["station_information"]["name"]
-    console.log(response);
-    console.log(response["data"][4]["Change In Snow Depth (in)"]);
-    console.log(response["data"][4]["Snow Depth (in)"]);
-    console.log(response["station_information"]["elevation"]);
-    console.log(response["station_information"]["name"]);
     getSnowRate(sDepth);
+    appendData(sDepth, csDepth, namey, elevation)
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Brekenridge</h2>")
-    $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-    $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-    $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-    $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-    $('#t1').toggle(800,"swing");
-    $('#t2').toggle(1000,"swing");
-    $('#t3').toggle(1200,"swing");
-    $('#t4').toggle(1400,"swing");
-    $('#t5').toggle(1600,"swing");
-    $('#t6').toggle(1800,"swing");
-    $('#t7').toggle(2000,"swing");
   });
 });
 //************** best mountain***********8
@@ -278,18 +218,7 @@ $('#motdBtn').click(function(){
         var namey = response["station_information"]["name"];
         console.log(sDepth);
         $('.t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Keystone</h2>")
-        $('.t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-        $('.t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-        $('.t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-        $('.t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-        $('.t1').toggle(800,"swing");
-        $('.t2').toggle(1000,"swing");
-        $('.t3').toggle(1200,"swing");
-        $('.t4').toggle(1400,"swing");
-        $('.t5').toggle(1600,"swing");
-        $('.t6').toggle(1800,"swing");
-        $('.t7').toggle(2000,"swing");
-        $(".togglers").show();
+        appendData(sDepth, csDepth, namey, elevation)
     })
   }
     if (snI === 'ab') {
@@ -301,17 +230,7 @@ $('#motdBtn').click(function(){
         var namey = response["station_information"]["name"];
         console.log(sDepth);
         $('#t1').html("<div class='box info t1' id='he'><h1>&#x2744 Arapahoe Basin</h2>")
-        $('#t2').html("<div class='box info t2' id='t2'><h3>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-        $('#t3').html("<div class='box info t3' id='t3'><h3>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-        $('#t5').html("<div class='box info t4' id='t5'><h3>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-        $('#t4').html("<div class='box info t5' id='t4'><h3>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-        $('#t1').toggle(800,"swing");
-        $('#t2').toggle(1100,"swing");
-        $('#t3').toggle(1400,"swing");
-        $('#t4').toggle(1700,"swing");
-        $('#t5').toggle(1900,"swing");
-        $('#t6').toggle(2200,"swing");
-        $('#t7').toggle(2500,"swing");
+        appendData(sDepth, csDepth, namey, elevation)
     })
   }
     if (snI === 'bc') {
@@ -322,19 +241,7 @@ $('#motdBtn').click(function(){
         var namey = response["station_information"]["name"];
         console.log(sDepth);
         $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Beaver Creek</h2>")
-        $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-        $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-        $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-        $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-        $('.t1').toggle(800,"swing");
-        $('.t2').toggle(1000,"swing");
-        $('.t3').toggle(1200,"swing");
-        $('.t4').toggle(1400,"swing");
-        $('.t5').toggle(1600,"swing");
-        $('.t6').toggle(1800,"swing");
-        $('.t7').toggle(2000,"swing");
-        $(".info").css('display','block');
-
+        appendData(sDepth, csDepth, namey, elevation)
     })
   }
     if (snI === 'vail') {
@@ -345,19 +252,7 @@ $('#motdBtn').click(function(){
         var namey = response["station_information"]["name"];
         console.log(sDepth);
         $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Vail</h2>")
-        $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-        $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-        $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-        $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-        $('.t1').toggle(800,"swing");
-        $('.t2').toggle(1000,"swing");
-        $('.t3').toggle(1200,"swing");
-        $('.t4').toggle(1400,"swing");
-        $('.t5').toggle(1600,"swing");
-        $('.t6').toggle(1800,"swing");
-        $('.t7').toggle(2000,"swing");
-        $(".info").css('display','block');
-
+        appendData(sDepth, csDepth, namey, elevation)
     })
   }
     if (snI === 'brek') {
@@ -368,35 +263,39 @@ $('#motdBtn').click(function(){
         var namey = response["station_information"]["name"];
         console.log(sDepth);
         $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Brekenridge</h2>")
-        $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
-        $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
-        $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
-        $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
-        $('.t1').toggle(800,"swing");
-        $('.t2').toggle(1000,"swing");
-        $('.t3').toggle(1200,"swing");
-        $('.t4').toggle(1400,"swing");
-        $('.t5').toggle(1600,"swing");
-        $('.t6').toggle(1800,"swing");
-        $('.t7').toggle(2000,"swing");
-        // $(".info").css('display','block');
-
+        appendData(sDepth, csDepth, namey, elevation)
     })
   }
 })
-
 function getSnowRate(sDepth){
   if (sDepth>50) {
     $("#snow").css("animation", "snow 2s linear infinite")
   }else if(sDepth>30){
-    $("#snow").css("animation", "snow 5s linear infinite")
+    $("#snow").css("animation", "snow 3s linear infinite")
   }else if (sDepth<30) {
-    $("#snow").css("animation", "snow 10s linear infinite")
+    $("#snow").css("animation", "snow 4s linear infinite")
   }else if(sDepth<26) {
-    $("#snow").css("animation", "snow 15s linear infinite")
-  }else if(sDepth===null){
-    $("#snow").hide
+    $("#snow").css("animation", "snow 10s linear infinite")
   }
+}
+//////////append data
+function appendTraf(dTime, dist){
+  $(".togglers").hide();
+  $("#t6").html("<div class='box info t1'><h3 id='t6'>&#x2744 Average Drive Time: "+dTime+"</h3>")
+  $("#t7").html("<div class='box info t1'><h3 id='t7'>&#x2744 Distance from Denver: "+dist+"</h3>")
+}
+function appendData(sDepth, csDepth, namey, elevation){
+  $('#t2').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Snow Depth: "+sDepth+" inches</h3>")
+  $('#t3').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Change in Snow Depth (24hrs): "+csDepth+" inches</h3>")
+  $('#t5').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 SNOTEL Station Name: "+namey+"</h3>")
+  $('#t4').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 SNOTEL Station Elevation: "+elevation+" feet</h3>")
+  $('#t1').toggle(800,"swing");
+  $('#t2').toggle(1000,"swing");
+  $('#t3').toggle(1200,"swing");
+  $('#t4').toggle(1400,"swing");
+  $('#t5').toggle(1600,"swing");
+  $('#t6').toggle(1800,"swing");
+  $('#t7').toggle(2000,"swing");
 }
 ///////////map starts
 jQuery(function($) {
@@ -436,6 +335,8 @@ function initialize() {
         marker = new google.maps.Marker({
             position: position,
             map: map,
+            // map.gmap.mapTypeId = google.maps.MapTypeId.SATELLITE,
+            // map.refresh(),
             title: markers[i][0]
         });
 
