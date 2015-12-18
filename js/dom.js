@@ -1,6 +1,6 @@
 ////*********this response is for brekenridge
 var brekGetter = $.ajax({
-  url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/937:CO:SNTL",
+  url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/415:CO:SNTL",
   method: "GET",
   dataType: "json"
 });
