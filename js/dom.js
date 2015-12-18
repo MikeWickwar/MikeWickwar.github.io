@@ -1,5 +1,3 @@
-//tests working js
-// console.log('working js');
 ////*********this response is for brekenridge
 var brekGetter = $.ajax({
   url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/937:CO:SNTL",
@@ -30,9 +28,6 @@ var ksGetter = $.ajax({
   method: "GET",
   dataType: "json"
 });
-
-
-
 /// api key for google AIzaSyBl0CTALhcPRBiyO4IAYGaqdoXq5UjYrK4
 var bcDGetter = $.ajax({
     url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?origins=Denver&destinations=Beaver%20Creek%20CO&units=imperial&key=AIzaSyBl0CTALhcPRBiyO4IAYGaqdoXq5UjYrK4",
@@ -59,20 +54,13 @@ var brekDGetter = $.ajax({
   method: "GET",
   dataType: "json"
 });
-
-
 // real dom interaction starts here
-
   $('.info').css('display','none')
-  // $('.mtn2').css('display','none')
-
 ///page 2 listeners *********************************
 $('#bc').on('click', function(){
   bcDGetter.done(function(response){
-    console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
     var dist = response.rows[0].elements[0].distance.text;
-    console.log(dTime);
     appendTraf(dTime, dist)
   });
   bcGetter.done(function(response){
@@ -88,10 +76,8 @@ $('#bc').on('click', function(){
 })
 $('#vl').on('click', function(){
   vailDGetter.done(function(response){
-    console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
     var dist = response.rows[0].elements[0].distance.text;
-    console.log(dTime);
     appendTraf(dTime, dist)
   });
   vailGetter.done(function(response){
@@ -106,10 +92,8 @@ $('#vl').on('click', function(){
 })
 $('#ab').on('click', function(){
   abDGetter.done(function(response){
-    console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
     var dist = response.rows[0].elements[0].distance.text;
-    console.log(dTime);
     appendTraf(dTime, dist)
   });
   abGetter.done(function(response){
@@ -125,10 +109,8 @@ $('#ab').on('click', function(){
 })
 $('#ks').on('click', function(){
   ksDGetter.done(function(response){
-    console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
     var dist = response.rows[0].elements[0].distance.text;
-    console.log(dTime);
     appendTraf(dTime, dist)
   });
   ksGetter.done(function(response){
@@ -143,11 +125,9 @@ $('#ks').on('click', function(){
 });
 $('#br').on('click', function(){
   brekDGetter.done(function(response){
-    console.log(response);
     var dTime = response.rows[0].elements[0].duration.text;
     var dist = response.rows[0].elements[0].distance.text;
     appendTraf(dTime, dist)
-    console.log(dTime);
   });
   brekGetter.done(function(response){
     var csDepth = response["data"][4]["Change In Snow Depth (in)"]
@@ -163,15 +143,11 @@ $('#br').on('click', function(){
 $('#motdBtn').click(function(){
   snI = 0;
   bstSn = 0;
-  console.log('click')
-
     bcGetter.done(function(response){
       var sDepth = response["data"][4]["Snow Depth (in)"]
       if(sDepth >= bstSn){
         snI = "bc";
         bstSn = sDepth;
-        console.log(snI);
-        console.log(bstSn);
       }
     })
     vailGetter.done(function(response){
@@ -179,8 +155,6 @@ $('#motdBtn').click(function(){
       if(sDepth >= bstSn){
         snI = "v";
         bstSn = sDepth;
-        console.log(snI);
-        console.log(bstSn);
       }
     })
     ksGetter.done(function(response){
@@ -188,8 +162,6 @@ $('#motdBtn').click(function(){
       if(sDepth >= bstSn){
         snI = "ks";
         bstSn = sDepth;
-        console.log(snI);
-        console.log(bstSn);
       }
     })
     brekGetter.done(function(response){
@@ -197,8 +169,6 @@ $('#motdBtn').click(function(){
       if(sDepth >= bstSn){
         snI = "brek";
         bstSn = sDepth;
-        console.log(snI);
-        console.log(bstSn);
       }
     })
     abGetter.done(function(response){
@@ -206,8 +176,6 @@ $('#motdBtn').click(function(){
       if(sDepth >= bstSn){
         snI = "ab";
         bstSn = sDepth;
-        console.log(snI);
-        console.log(bstSn);
       }
     })
     if (snI === 'ks') {
@@ -216,7 +184,6 @@ $('#motdBtn').click(function(){
         var csDepth = response["data"][4]["Change In Snow Depth (in)"];
         var elevation = response["station_information"]["elevation"];
         var namey = response["station_information"]["name"];
-        console.log(sDepth);
         $('.t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Keystone</h2>")
         appendData(sDepth, csDepth, namey, elevation)
     })
@@ -228,7 +195,6 @@ $('#motdBtn').click(function(){
         var csDepth = response["data"][4]["Change In Snow Depth (in)"];
         var elevation = response["station_information"]["elevation"];
         var namey = response["station_information"]["name"];
-        console.log(sDepth);
         $('#t1').html("<div class='box info t1' id='he'><h1>&#x2744 Arapahoe Basin</h2>")
         appendData(sDepth, csDepth, namey, elevation)
     })
@@ -239,7 +205,6 @@ $('#motdBtn').click(function(){
         var csDepth = response["data"][4]["Change In Snow Depth (in)"];
         var elevation = response["station_information"]["elevation"];
         var namey = response["station_information"]["name"];
-        console.log(sDepth);
         $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Beaver Creek</h2>")
         appendData(sDepth, csDepth, namey, elevation)
     })
@@ -250,7 +215,6 @@ $('#motdBtn').click(function(){
         var csDepth = response["data"][4]["Change In Snow Depth (in)"];
         var elevation = response["station_information"]["elevation"];
         var namey = response["station_information"]["name"];
-        console.log(sDepth);
         $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Vail</h2>")
         appendData(sDepth, csDepth, namey, elevation)
     })
@@ -261,7 +225,6 @@ $('#motdBtn').click(function(){
         var csDepth = response["data"][4]["Change In Snow Depth (in)"];
         var elevation = response["station_information"]["elevation"];
         var namey = response["station_information"]["name"];
-        console.log(sDepth);
         $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Brekenridge</h2>")
         appendData(sDepth, csDepth, namey, elevation)
     })
@@ -299,24 +262,21 @@ function appendData(sDepth, csDepth, namey, elevation){
 }
 ///////////map starts
 jQuery(function($) {
-    //Load the map API
+    //map api
     var script = document.createElement('script');
     script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
     document.body.appendChild(script);
 });
-
 function initialize() {
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
         mapTypeId: 'roadmap'
     };
-
-    // Display a map on the page
+    // Display
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     map.setTilt(45);
-
-    // Multiple Markers
+    // Markers
     var markers = [
         ['Brekenridge, CO', 39.481228, -106.066778],
         ['Arapahoe Basin, CO', 39.642485, -105.871664],
@@ -324,33 +284,25 @@ function initialize() {
         ['Beaver Creek, CO', 39.585824, -106.507276],
         ['Keystone, CO', 39.604538, -105.954089]
     ];
-
-    // Display multiple markers on a map
+    // Display markers
     var infoWindow = new google.maps.InfoWindow(), marker, i;
-
-    // Loop through our array of markers & place each one on the map
+    // place markers
     for( i = 0; i < markers.length; i++ ) {
         var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
         bounds.extend(position);
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            // map.gmap.mapTypeId = google.maps.MapTypeId.SATELLITE,
-            // map.refresh(),
             title: markers[i][0]
         });
-
-        // Automatically center the map fitting all markers on the screen
+        // Automatically center the map fitting all markers
         map.fitBounds(bounds);
     }
-
     var trafficLayer = new google.maps.TrafficLayer();
       trafficLayer.setMap(map);
-
     // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
     var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
         this.setZoom(8);
         google.maps.event.removeListener(boundsListener);
     });
-
 }

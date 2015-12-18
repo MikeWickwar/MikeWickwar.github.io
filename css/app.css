@@ -29,6 +29,7 @@ body{
   font-style: italic;
   position:relative;
   z-index: 3;
+
 }
 .sec{
   font-size: 1em;
@@ -174,4 +175,4 @@ h3{
     height: 100%;
     border-radius: 30px;
     border: 2px solid white;
-}
+}  
