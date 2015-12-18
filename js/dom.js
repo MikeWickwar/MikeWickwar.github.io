@@ -271,7 +271,7 @@ function initialize() {
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
-        mapTypeId: 'roadmap'
+        mapTypeId: 'hybrid'
     };
     // Display
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
