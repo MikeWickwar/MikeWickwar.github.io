@@ -1,6 +1,7 @@
 ////*********this response is for brekenridge
-var brekGetter = $.ajax({
-  url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/415:CO:SNTL",
+var breckGetter = $.ajax({
+  url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/937:CO:SNTL",
+  // 415:CO:SNTL",
   method: "GET",
   dataType: "json"
 });
@@ -49,7 +50,7 @@ var ksDGetter = $.ajax({
   method: "GET",
   dataType: "json"
 });
-var brekDGetter = $.ajax({
+var breckDGetter = $.ajax({
   url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?origins=Denver&destinations=Brekenridge%20CO&units=imperial&key=AIzaSyBl0CTALhcPRBiyO4IAYGaqdoXq5UjYrK4",
   method: "GET",
   dataType: "json"
@@ -124,19 +125,19 @@ $('#ks').on('click', function(){
   });
 });
 $('#br').on('click', function(){
-  brekDGetter.done(function(response){
+  breckDGetter.done(function(response){
     var dTime = response.rows[0].elements[0].duration.text;
     var dist = response.rows[0].elements[0].distance.text;
     appendTraf(dTime, dist)
   });
-  brekGetter.done(function(response){
+  breckGetter.done(function(response){
     var csDepth = response["data"][4]["Change In Snow Depth (in)"]
     var sDepth = response["data"][4]["Snow Depth (in)"]
     var elevation = response["station_information"]["elevation"]
     var namey = response["station_information"]["name"]
     getSnowRate(sDepth);
     appendData(sDepth, csDepth, namey, elevation)
-    $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Brekenridge</h2>")
+    $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Breckenridge</h2>")
   });
 });
 //************** best mountain***********8
@@ -164,7 +165,7 @@ $('#motdBtn').click(function(){
         bstSn = sDepth;
       }
     })
-    brekGetter.done(function(response){
+    breckGetter.done(function(response){
       var sDepth = response["data"][4]["Snow Depth (in)"]
       if(sDepth >= bstSn){
         snI = "brek";
@@ -220,12 +221,12 @@ $('#motdBtn').click(function(){
     })
   }
     if (snI === 'brek') {
-      brekGetter.done(function(response){
+      breckGetter.done(function(response){
         var sDepth = response["data"][4]["Snow Depth (in)"];
         var csDepth = response["data"][4]["Change In Snow Depth (in)"];
         var elevation = response["station_information"]["elevation"];
         var namey = response["station_information"]["name"];
-        $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Brekenridge</h2>")
+        $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Breckenridge</h2>")
         appendData(sDepth, csDepth, namey, elevation)
     })
   }
@@ -278,7 +279,7 @@ function initialize() {
     map.setTilt(45);
     // Markers
     var markers = [
-        ['Brekenridge, CO', 39.481228, -106.066778],
+        ['Breckenridge, CO', 39.481228, -106.066778],
         ['Arapahoe Basin, CO', 39.642485, -105.871664],
         ['Vail, CO', 39.606401, -106.354940],
         ['Beaver Creek, CO', 39.585824, -106.507276],
