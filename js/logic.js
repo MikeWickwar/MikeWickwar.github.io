@@ -197,17 +197,21 @@ function getSnowRate(sDepth){
   }
 }
 vailConditionGetter.done(function(response){
-  console.log(response);
+  console.log(response["data"]["weather"][0]);
 })
-breckConditionGetter.done(function(response){
-  console.log(response);
-})
-ksConditionGetter.done(function(response){
-  console.log(response);
-})
-abConditionGetter.done(function(response){
-  console.log(response);
-})
-bcConditionGetter.done(function(response){
-  console.log(response);
+vailConditionGetter.done(function(response){
+  for (var day = 0; day < 3; day++) {
+  console.log(
+  response["data"]["weather"][day]["chanceofsnow"],
+  response["data"]["weather"][day]["totalSnowfall_cm"],
+  response["data"]["weather"][day]["bottom"][0]["maxtempF"],
+  response["data"]["weather"][day]["bottom"][0]["mintempF"],
+  response["data"]["weather"][day]["top"][0]["maxtempF"],
+  response["data"]["weather"][day]["top"][0]["mintempF"],
+  response["data"]["weather"][day]["hourly"][0]["top"][0]["windspeedMiles"],
+  response["data"]["weather"][day]["hourly"][0]["chanceofsunshine"],
+  response["data"]["weather"][day]["astronomy"][0]["sunrise"],
+  response["data"]["weather"][day]["astronomy"][0]["sunset"]
+)
+}
 })

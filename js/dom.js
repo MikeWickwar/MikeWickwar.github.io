@@ -33,6 +33,19 @@ $('#vl').on('click', function(){
     appendData(sDepth, csDepth, namey, elevation);
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Vail</h2>")
   });
+  vailConditionGetter.done(function(response){
+    var chanceOfSnow = response["data"]["weather"][0]["chanceofsnow"];
+    var totalSnowfall = response["data"]["weather"][0]["totalSnowfall_cm"];
+    var btmMaxTemp = response["data"]["weather"][0]["bottom"][0]["maxtempF"];
+    var btmMinTemp = response["data"]["weather"][0]["bottom"][0]["mintempF"];
+    var topMaxTemp = response["data"]["weather"][0]["top"][0]["maxtempF"];
+    var topMinTemp = response["data"]["weather"][0]["top"][0]["mintempF"];
+    var windSpeed = response["data"]["weather"][day]["hourly"][0]["top"][0]["windspeedMiles"];
+    var sunShine = response["data"]["weather"][day]["hourly"][0]["chanceofsunshine"];
+    var sRise = response["data"]["weather"][0]["astronomy"][0]["sunrise"];
+    var sSet = response["data"]["weather"][0]["astronomy"][0]["sunset"];
+
+  })
 })
 $('#ab').on('click', function(){
   abDGetter.done(function(response){
