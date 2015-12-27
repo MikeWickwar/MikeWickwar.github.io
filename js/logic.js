@@ -1,34 +1,36 @@
-////*********this response is for brekenridge
-var newGetter = $.ajax({
-  url: "https://cors-anywhere.herokuapp.com/http://feeds.snocountry.net/getResortList.php?apiKey=SnoCountry.example&states=vt&resortType=alpine&output=json",
+////
+var vailConditionGetter = $.ajax({
+  url: "http://api.worldweatheronline.com/premium/v1/ski.ashx?q=Vail%20Colorado&key=61a99622a6c7a291196ac67acb103&num_of_days=3&sunset&format=json", // this expires in two months free trial
+  // url: "http://api.worldweatheronline.com/free/v2/ski.ashx?q=Vail%20Colorado&key=ee2d8e8cd22262f8024c0edfe69e3&num_of_days=1&sunset&format=json", // this is the free key
   method: "GET",
   dataType: "json"
 });
+////*********this call is for brekenridge
 var breckGetter = $.ajax({
   url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/415:CO:SNTL",
   // url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/937:CO:SNTL",
   method: "GET",
   dataType: "json"
 });
-////*********this response is for vail
+////*********this call is for vail
 var vailGetter = $.ajax({
   url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/842:CO:SNTL",
   method: "GET",
   dataType: "json"
 });
-////*********this response is for bever creek
+////*********this call is for bever creek
 var bcGetter = $.ajax({
   url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/1040:CO:SNTL",
   method: "GET",
   dataType: "json"
 });
-////*********this response is for bever creek
+////*********this call is for bever creek
 var abGetter = $.ajax({
   url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/505:CO:SNTL",
   method: "GET",
   dataType: "json"
 });
-////*********this response is for bever creek
+////*********this call is for bever creek
 var ksGetter = $.ajax({
   url: "https://cors-anywhere.herokuapp.com/http://api.powderlin.es/station/505:CO:SNTL",
   method: "GET",
@@ -174,3 +176,6 @@ function getSnowRate(sDepth){
     $("#snow").css("animation", "snow 10s linear infinite")
   }
 }
+vailConditionGetter.done(function(response){
+  console.log(response);
+})

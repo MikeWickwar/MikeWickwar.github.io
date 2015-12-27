@@ -149,6 +149,3 @@ function initialize() {
         google.maps.event.removeListener(boundsListener);
     });
 }
-newGetter.done(function(respnose){
-  console.log(respnose);
-})
