@@ -1,7 +1,27 @@
-////
+////Conditions from wold weath online
 var vailConditionGetter = $.ajax({
   url: "http://api.worldweatheronline.com/premium/v1/ski.ashx?q=Vail%20Colorado&key=61a99622a6c7a291196ac67acb103&num_of_days=3&sunset&format=json", // this expires in two months free trial
   // url: "http://api.worldweatheronline.com/free/v2/ski.ashx?q=Vail%20Colorado&key=ee2d8e8cd22262f8024c0edfe69e3&num_of_days=1&sunset&format=json", // this is the free key
+  method: "GET",
+  dataType: "json"
+});
+var breckConditionGetter = $.ajax({
+  url: "http://api.worldweatheronline.com/premium/v1/ski.ashx?q=Breckenridge%20Colorado&key=61a99622a6c7a291196ac67acb103&num_of_days=3&sunset&format=json", // this expires in two months free trial
+  method: "GET",
+  dataType: "json"
+});
+var bcConditionGetter = $.ajax({
+  url: "http://api.worldweatheronline.com/premium/v1/ski.ashx?q=81620&key=61a99622a6c7a291196ac67acb103&num_of_days=3&sunset&format=json", // this expires in two months free trial
+  method: "GET",
+  dataType: "json"
+});
+var ksConditionGetter = $.ajax({
+  url: "http://api.worldweatheronline.com/premium/v1/ski.ashx?q=silverthorn%20Colorado&key=61a99622a6c7a291196ac67acb103&num_of_days=3&sunset&format=json", // this expires in two months free trial
+  method: "GET",
+  dataType: "json"
+});
+var abConditionGetter = $.ajax({
+  url: "http://api.worldweatheronline.com/premium/v1/ski.ashx?q=80435&key=61a99622a6c7a291196ac67acb103&areaName&num_of_days=3&sunset&format=json", // this expires in two months free trial
   method: "GET",
   dataType: "json"
 });
@@ -177,5 +197,17 @@ function getSnowRate(sDepth){
   }
 }
 vailConditionGetter.done(function(response){
+  console.log(response);
+})
+breckConditionGetter.done(function(response){
+  console.log(response);
+})
+ksConditionGetter.done(function(response){
+  console.log(response);
+})
+abConditionGetter.done(function(response){
+  console.log(response);
+})
+bcConditionGetter.done(function(response){
   console.log(response);
 })
