@@ -17,6 +17,20 @@ $('#bc').on('click', function(){
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Beaver Creek</h2>")
     appendData(sDepth, csDepth, namey, elevation);
   });
+  bcConditionGetter.done(function(response){
+    var chanceOfSnow = response["data"]["weather"][0]["chanceofsnow"];
+    var totalSnowfall = response["data"]["weather"][0]["totalSnowfall_cm"];
+    var btmMaxTemp = response["data"]["weather"][0]["bottom"][0]["maxtempF"];
+    var btmMinTemp = response["data"]["weather"][0]["bottom"][0]["mintempF"];
+    var topMaxTemp = response["data"]["weather"][0]["top"][0]["maxtempF"];
+    var topMinTemp = response["data"]["weather"][0]["top"][0]["mintempF"];
+    var windSpeed = response["data"]["weather"][0]["hourly"][0]["top"][0]["windspeedMiles"];
+    var sunShine = response["data"]["weather"][0]["hourly"][0]["chanceofsunshine"];
+    var sRise = response["data"]["weather"][0]["astronomy"][0]["sunrise"];
+    var sSet = response["data"]["weather"][0]["astronomy"][0]["sunset"];
+    appendCondition(chanceOfSnow, totalSnowfall, btmMaxTemp, btmMinTemp, topMaxTemp, topMinTemp, windSpeed, sunShine, sRise, sSet);
+
+  })
 })
 $('#vl').on('click', function(){
   vailDGetter.done(function(response){
@@ -40,11 +54,11 @@ $('#vl').on('click', function(){
     var btmMinTemp = response["data"]["weather"][0]["bottom"][0]["mintempF"];
     var topMaxTemp = response["data"]["weather"][0]["top"][0]["maxtempF"];
     var topMinTemp = response["data"]["weather"][0]["top"][0]["mintempF"];
-    var windSpeed = response["data"]["weather"][day]["hourly"][0]["top"][0]["windspeedMiles"];
-    var sunShine = response["data"]["weather"][day]["hourly"][0]["chanceofsunshine"];
+    var windSpeed = response["data"]["weather"][0]["hourly"][0]["top"][0]["windspeedMiles"];
+    var sunShine = response["data"]["weather"][0]["hourly"][0]["chanceofsunshine"];
     var sRise = response["data"]["weather"][0]["astronomy"][0]["sunrise"];
     var sSet = response["data"]["weather"][0]["astronomy"][0]["sunset"];
-
+    appendCondition(chanceOfSnow, totalSnowfall, btmMaxTemp, btmMinTemp, topMaxTemp, topMinTemp, windSpeed, sunShine, sRise, sSet);
   })
 })
 $('#ab').on('click', function(){
@@ -63,6 +77,19 @@ $('#ab').on('click', function(){
     appendData(sDepth, csDepth, namey, elevation);
     $('#t1').html("<div class='box info t1'><h2 class='h3er'id='he2'>&#x2744 Arapahoe Basin</h2>")
   });
+  abConditionGetter.done(function(response){
+    var chanceOfSnow = response["data"]["weather"][0]["chanceofsnow"];
+    var totalSnowfall = response["data"]["weather"][0]["totalSnowfall_cm"];
+    var btmMaxTemp = response["data"]["weather"][0]["bottom"][0]["maxtempF"];
+    var btmMinTemp = response["data"]["weather"][0]["bottom"][0]["mintempF"];
+    var topMaxTemp = response["data"]["weather"][0]["top"][0]["maxtempF"];
+    var topMinTemp = response["data"]["weather"][0]["top"][0]["mintempF"];
+    var windSpeed = response["data"]["weather"][0]["hourly"][0]["top"][0]["windspeedMiles"];
+    var sunShine = response["data"]["weather"][0]["hourly"][0]["chanceofsunshine"];
+    var sRise = response["data"]["weather"][0]["astronomy"][0]["sunrise"];
+    var sSet = response["data"]["weather"][0]["astronomy"][0]["sunset"];
+    appendCondition(chanceOfSnow, totalSnowfall, btmMaxTemp, btmMinTemp, topMaxTemp, topMinTemp, windSpeed, sunShine, sRise, sSet);
+  })
 })
 $('#ks').on('click', function(){
   ksDGetter.done(function(response){
@@ -79,6 +106,19 @@ $('#ks').on('click', function(){
     appendData(sDepth, csDepth, namey, elevation);
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Keystone</h2>")
   });
+  ksConditionGetter.done(function(response){
+    var chanceOfSnow = response["data"]["weather"][0]["chanceofsnow"];
+    var totalSnowfall = response["data"]["weather"][0]["totalSnowfall_cm"];
+    var btmMaxTemp = response["data"]["weather"][0]["bottom"][0]["maxtempF"];
+    var btmMinTemp = response["data"]["weather"][0]["bottom"][0]["mintempF"];
+    var topMaxTemp = response["data"]["weather"][0]["top"][0]["maxtempF"];
+    var topMinTemp = response["data"]["weather"][0]["top"][0]["mintempF"];
+    var windSpeed = response["data"]["weather"][0]["hourly"][0]["top"][0]["windspeedMiles"];
+    var sunShine = response["data"]["weather"][0]["hourly"][0]["chanceofsunshine"];
+    var sRise = response["data"]["weather"][0]["astronomy"][0]["sunrise"];
+    var sSet = response["data"]["weather"][0]["astronomy"][0]["sunset"];
+    appendCondition(chanceOfSnow, totalSnowfall, btmMaxTemp, btmMinTemp, topMaxTemp, topMinTemp, windSpeed, sunShine, sRise, sSet);
+  })
 });
 $('#br').on('click', function(){
   breckDGetter.done(function(response){
@@ -95,6 +135,19 @@ $('#br').on('click', function(){
     appendData(sDepth, csDepth, namey, elevation)
     $('#t1').html("<div class='box info t1'><h2 class='h3er' id='he2'>&#x2744 Breckenridge</h2>")
   });
+  breckConditionGetter.done(function(response){
+    var chanceOfSnow = response["data"]["weather"][0]["chanceofsnow"];
+    var totalSnowfall = response["data"]["weather"][0]["totalSnowfall_cm"];
+    var btmMaxTemp = response["data"]["weather"][0]["bottom"][0]["maxtempF"];
+    var btmMinTemp = response["data"]["weather"][0]["bottom"][0]["mintempF"];
+    var topMaxTemp = response["data"]["weather"][0]["top"][0]["maxtempF"];
+    var topMinTemp = response["data"]["weather"][0]["top"][0]["mintempF"];
+    var windSpeed = response["data"]["weather"][0]["hourly"][0]["top"][0]["windspeedMiles"];
+    var sunShine = response["data"]["weather"][0]["hourly"][0]["chanceofsunshine"];
+    var sRise = response["data"]["weather"][0]["astronomy"][0]["sunrise"];
+    var sSet = response["data"]["weather"][0]["astronomy"][0]["sunset"];
+    appendCondition(chanceOfSnow, totalSnowfall, btmMaxTemp, btmMinTemp, topMaxTemp, topMinTemp, windSpeed, sunShine, sRise, sSet);
+  })
 });
 
 //////////append data
@@ -115,6 +168,28 @@ function appendData(sDepth, csDepth, namey, elevation){
   $('#t5').toggle(1600,"swing");
   $('#t6').toggle(1800,"swing");
   $('#t7').toggle(2000,"swing");
+}
+function appendCondition(chanceOfSnow, totalSnowfall, btmMaxTemp, btmMinTemp, topMaxTemp, topMinTemp, windSpeed, sunShine, sRise, sSet){
+  $('#t8').html("<div class='box info t1'><h3 class='h3er' id='t2'>&#x2744 Chance of Snow: "+chanceOfSnow+"%</h3>")
+  $('#t9').html("<div class='box info t1'><h3 class='h3er' id='t3'>&#x2744 Total Snow Fall (24hrs): "+totalSnowfall+" inches</h3>")
+  $('#t10').html("<div class='box info t1'><h3 class='h3er' id='t5'>&#x2744 Max Daily temperature (bottom of mountain): "+btmMaxTemp+"&deg F </h3>")
+  $('#t11').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 Min Daily temperature (bottom of mountain) "+btmMinTemp+"&deg F</h3>")
+  $('#t13').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 Max Daily temperature (top of mountain) "+topMaxTemp+"&deg F</h3>")
+  $('#t12').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 Min Daily temperature (top of mountain) "+topMinTemp+" &deg F</h3>")
+  $('#t14').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 Wind Speed: "+windSpeed+" MPH</h3>")
+  $('#t15').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 Chance of Sun Shine "+sunShine+"%</h3>")
+  $('#t16').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 Sun Rise "+sRise+"</h3>")
+  $('#t17').html("<div class='box info t1'><h3 class='h3er' id='t4'>&#x2744 sSet "+sSet+"</h3>")
+  $('#t8').toggle(1400,"swing");
+  $('#t9').toggle(1600,"swing");
+  $('#t10').toggle(1800,"swing");
+  $('#t11').toggle(2000,"swing");
+  $('#t12').toggle(2000,"swing");
+  $('#t13').toggle(2000,"swing");
+  $('#t14').toggle(2000,"swing");
+  $('#t15').toggle(2000,"swing");
+  $('#t16').toggle(2000,"swing");
+  $('#t17').toggle(2000,"swing");
 }
 ///////////map starts
 jQuery(function($) {
